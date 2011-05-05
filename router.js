@@ -6,7 +6,7 @@ function route(handle, pathname) {
         response.writeHead(404, {"Content-Type": "text/html"});
         response.write("404 Not found");
         response.end();
-    };
+    }
 }
 
 exports.route = route;

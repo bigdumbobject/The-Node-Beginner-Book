@@ -7,12 +7,9 @@ function start(route, handle) {
         console.log("Request for " + pathname + " received.");
         
         route(handle, pathname, response);
-        
-        response.writeHead(200, {"Content-Type": "text/html"});
     }
     
     http.createServer(onRequest).listen(process.env.C9_PORT, "0.0.0.0");
-    
     console.log("The server has started.");
 }
 
