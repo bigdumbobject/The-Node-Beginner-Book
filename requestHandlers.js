@@ -5,8 +5,12 @@ function start() {
     
     var content = "empty";
     
-    exec("ls -lah", function (error, stdout, stderr) {
-        content = stdout;
+    exec("find /",
+        { timeout: 10000, maxBuffer: 20000*1024 }, 
+        function (error, stdout, stderr) {
+            response.writeHead(200, {"Content-Type": "text/html"});
+            response.write(stdout);
+            response.end();
     });
     
     return content;
@@ -14,7 +18,9 @@ function start() {
 
 function upload() {
     console.log("Request handler 'upload' was called.");
-    return "Hello upload";
+    response.writeHead(200, {"Content-Type": "text/html"});
+    response.write("Hello Upload");
+    response.end();
 }
 
 exports.start = start;
